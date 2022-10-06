@@ -21,7 +21,7 @@ def main():
         location = play_one_move(location)
 
     print(f"Victory! Total coins {coins_total}.")
-    answer = more()
+    play_again()
 
 
 def play_one_move(location: Tuple[int]) -> Tuple[int]:
@@ -121,8 +121,8 @@ def pull_lever(location, previous_location, coins_total):
     return coins
 
 
-def more():
-    answer = input("Play again (Y/N): ")
+def play_again():
+    answer = input("Play again (y/n): ")
     if answer.lower() == "y":
         coins_total = 0
         previous_location = (0,0)
@@ -133,7 +133,7 @@ def more():
             location = play_one_move(location)
 
         print(f"Victory! Total coins {coins_total}.")
-        answer = more()
+        answer = play_again()
 
 
 
