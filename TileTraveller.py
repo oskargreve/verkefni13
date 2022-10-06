@@ -12,11 +12,14 @@ FINAL_DESTINATION = (3, 1)
 
 
 def main():
+    coins_total = 0
     location = STARTING_LOCATION
     while location != FINAL_DESTINATION:
+        coins_total += pull_lever(location)
         location = play_one_move(location)
 
-    print("Victory!")
+
+    print(f"Victory! Total coins {coins_total}.")
 
 
 def play_one_move(location: Tuple[int]) -> Tuple[int]:
@@ -101,6 +104,19 @@ def move(direction: str, location: Tuple[int]) -> Tuple[int]:
         x -= 1
 
     return x, y
+
+def pull_lever(location):
+    YES = "y" or "Y"
+    NO = "n" or "N"
+    coins = 0
+    if location == (1, 2) or location == (2, 2) or location == (2,3) or location == (3,2):
+        yes_or_no = input("do you want to pull the lever?: ")
+        if yes_or_no == YES:
+            print("you have recieved 1 coin")
+            coins += 1
+        else:
+            coins += 0
+    return coins
 
 
 if __name__ == "__main__":
