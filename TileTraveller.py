@@ -14,10 +14,22 @@ FINAL_DESTINATION = (3, 1)
 def main():
     location = STARTING_LOCATION
     while location != FINAL_DESTINATION:
+
         location = play_one_move(location)
 
     print("Victory!")
+    answer = more()
+    while answer.lower() == "y":
+        location = STARTING_LOCATION
+        while location != FINAL_DESTINATION:
 
+            location = play_one_move(location)
+
+        print("Victory!")
+        answer = more()
+    
+def more():
+    return input("Play again (Y/N): ")
 
 def play_one_move(location: Tuple[int]) -> Tuple[int]:
     """Plays one move of the game.
@@ -101,7 +113,6 @@ def move(direction: str, location: Tuple[int]) -> Tuple[int]:
         x -= 1
 
     return x, y
-
 
 if __name__ == "__main__":
     main()
